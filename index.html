@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff0f6">
+<title>For My Samruu ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #f4a7c4;
+  --deep-pink: #d77a9e;
+  --text: #a65b7b;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(
+      ellipse at 20% 12%,
+      #fffaff 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 85% 85%,
+      #ffd4e5 0%,
+      transparent 55%
+    ),
+    linear-gradient(160deg, #fff2f8, #ffe4ef);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  padding:
+    max(24px, env(safe-area-inset-top))
+    18px
+    max(24px, env(safe-area-inset-bottom));
+}
+
+.container {
+  width: 100%;
+  max-width: 430px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.heading {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: clamp(34px, 9vw, 46px);
+  line-height: 1.55;
+  color: #e18aab;
+  margin: 0 0 24px;
+  text-shadow: 0 4px 16px #f8c3d788;
+}
+
+.envelope-wrap {
+  width: min(290px, 78vw);
+  aspect-ratio: 290 / 205;
+  position: relative;
+  margin: 40px auto 0;
+  cursor: pointer;
+  filter: drop-shadow(0 17px 17px #d78dab45);
+  transition: transform .3s ease;
+  touch-action: manipulation;
+  outline-offset: 8px;
+}
+
+.envelope-wrap:active {
+  transform: scale(.97);
+}
+
+.envelope {
+  position: absolute;
+  inset: 0;
+  background: #f8aecb;
+  border-radius: 9px;
+}
+
+.envelope-left {
+  position: absolute;
+  inset: 0;
+  background: #fbbbd3;
+  clip-path: polygon(0 0, 56% 59%, 0 100%);
+  z-index: 1;
+}
+
+.envelope-right {
+  position: absolute;
+  inset: 0;
+  background: #f4a6c5;
+  clip-path: polygon(100% 0, 44% 59%, 100% 100%);
+  z-index: 1;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  background: #ffc9dd;
+  clip-path: polygon(0 100%, 50% 42%, 100% 100%);
+  border-radius: 0 0 9px 9px;
+  z-index: 2;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 56%;
+  background: #f295b9;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  z-index: 4;
+  transition: transform .8s ease;
+}
+
+.heart-seal {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translate(-50%, -50%);
+  width: 57px;
+  height: 57px;
+  background: #fff2f8;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #e780a8;
+  font-size: 30px;
+  box-shadow: 0 4px 13px #c9749950;
+  z-index: 5;
+  transition: opacity .3s;
+}
+
+.open .flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.open .heart-seal {
+  opacity: 0;
+}
+
+.hint {
+  margin-top: 31px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #c48ca5;
+  letter-spacing: 1.4px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .4; }
+}
+
+/* THE LETTER */
+
+.letter {
+  display: none;
+  background: rgba(255, 253, 255, .91);
+  border: 2px solid #ffe1ed;
+  border-radius: 28px;
+  padding: 40px 27px 35px;
+  width: 100%;
+  box-shadow:
+    0 20px 50px #d790ae29,
+    inset 0 0 22px #fff2f7;
+  animation: letterAppear .85s ease both;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.message {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 4.3vw, 18px);
+  line-height: 1.95;
+  color: var(--text);
+  margin: 0 auto 30px;
+  max-width: 350px;
+  overflow-wrap: break-word;
+}
+
+.te-amo {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(83px, 22vw, 112px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ea92b4;
+  text-shadow: 0 6px 20px #f5bad088;
+  animation: heartbeat 2.5s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.055); }
+}
+
+.floating-heart {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(-15deg);
+    opacity: 0;
+  }
+  15%, 80% { opacity: .75; }
+  100% {
+    transform: translateY(-115vh) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* SMALLER IPHONES */
+@media (max-width: 390px) {
+  .letter { padding: 30px 20px; }
+  .message {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .te-amo { font-size: 83px; }
+  .envelope-wrap { width: 260px; }
+}
+
+/* SHORT SCREENS & LANDSCAPE */
+@media (max-height: 650px) {
+  body { align-items: flex-start; }
+  .container { margin: auto 0; }
+  .heading { margin-bottom: 10px; }
+  .envelope-wrap { margin-top: 18px; }
+  .letter { padding-top: 25px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <section id="intro">
+    <h1 class="heading">For my Samruu ♡</h1>
+
+    <div
+      class="envelope-wrap"
+      id="envelope"
+      role="button"
+      tabindex="0"
+      aria-label="Open your letter"
+    >
+      <div class="envelope"></div>
+      <div class="envelope-left"></div>
+      <div class="envelope-right"></div>
+      <div class="envelope-front"></div>
+      <div class="flap"></div>
+      <div class="heart-seal">♥</div>
+    </div>
+
+    <p class="hint">tap to open ♡</p>
+  </section>
+
+  <section class="letter" id="letter">
+    <p class="message">
+      I em veri sorri kasto maile aaja ekdam
+      dry dry tekst hane haii ani ma ekdam
+      thakya bhayera ho k ani maile good
+      night bhanda I love you ni bhanya
+      thina, I am really sorry for that
+      too, plich forgib me samruu huhuuu
+    </p>
+
+    <div class="te-amo">Te amo</div>
+  </section>
+
+</main>
+
+<script>
+const envelope = document.getElementById("envelope");
+const intro = document.getElementById("intro");
+const letter = document.getElementById("letter");
+
+let opened = false;
+
+function openLetter() {
+  if (opened) return;
+  opened = true;
+
+  envelope.classList.add("open");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    letter.style.display = "block";
+    createHeartBurst();
+  }, 850);
+}
+
+envelope.addEventListener("click", openLetter);
+
+envelope.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openLetter();
+  }
+});
+
+const hearts = ["♡", "♥", "💕", "🌸", "💗"];
+
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "floating-heart";
+
+  heart.textContent =
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = "105vh";
+  heart.style.fontSize =
+    (12 + Math.random() * 17) + "px";
+
+  const duration = 5 + Math.random() * 5;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), duration * 1000);
+}
+
+function createHeartBurst() {
+  for (let i = 0; i < 30; i++) {
+    setTimeout(createHeart, i * 80);
+  }
+}
+
+setInterval(createHeart, 750);
+</script>
+
+</body>
+</html>
